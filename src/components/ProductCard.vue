@@ -41,7 +41,7 @@ const addToFavorites = () => {
       </RouterLink>
       <div class="card-body">
         <div class="rating d-flex justify-content-between align-items-center mb-2">
-          <img :src="`./src/assets/ratings/rating-${product.rating.stars * 10}.png`" alt="">
+          <img :src="`/ratings/rating-${product.rating.stars * 10}.png`" alt="">
           <span class="text-primary fw-semibold">{{ product.rating.count }}</span>
         </div>
         <RouterLink
