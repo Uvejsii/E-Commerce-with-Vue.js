@@ -116,7 +116,7 @@ const resetFilter = () => {
     <ul class="list-inline">
       <li class=" text-light">
         <RouterLink
-            to="/signup"
+            to="/account"
             class="text-light pt-2 position-relative"
             active-class="active">
           <i class="bi bi-person fs-2"></i>

@@ -3,7 +3,7 @@ import HomeView from "@/views/HomeView.vue";
 import CartView from "@/views/CartView.vue";
 import FavoritesView from "@/views/FavoritesView.vue";
 import ProductView from "@/views/ProductView.vue";
-import SignupView from "@/views/AccountView.vue";
+import AccountView from "@/views/AccountView.vue";
 
 
 const router = createRouter({
@@ -26,7 +26,7 @@ const router = createRouter({
         {
             path: '/account',
             name: 'account',
-            component: SignupView
+            component: AccountView
         },
         {
             path: '/favorites',
