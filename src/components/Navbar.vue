@@ -167,9 +167,13 @@ const resetFilter = () => {
   content: '';
   position: absolute;
   top: 35px;
-  width: 33px;
-  height: 2px;
+  width: 100%;
+  height: 7%;
   background-color: white;
+}
+
+.username {
+  padding-left: -30px !important;
 }
 
 @media (max-width: 995px) {

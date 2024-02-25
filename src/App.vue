@@ -18,6 +18,10 @@ if (!favoriteProduct.value) {
   localStorage.setItem('favoriteProducts', '[]')
 }
 
+const account = ref(JSON.parse(localStorage.getItem('account')))
+if (!account.value) {
+  localStorage.setItem('account', '[]')
+}
 const handleSearch = (searchValue) => {
   if (!searchValue.trim) {
     filteredProducts.value = allProducts.value

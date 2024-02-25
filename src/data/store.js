@@ -64,10 +64,6 @@ export const useFavoritesList = defineStore('favoriteItems', {
             }
 
             localStorage.setItem('favoriteProducts', JSON.stringify(this.favoriteItems))
-            // this.favoriteItems.push(newFavItem)
-            // const favItems = JSON.parse(localStorage.getItem('favoriteProducts'))
-            // favItems.push(newFavItem)
-            // localStorage.setItem('favoriteProducts', JSON.stringify(favItems))
         },
         removeFromFavorites(id) {
             this.favoriteItems = this.favoriteItems.filter(item => item.id !== id)
@@ -79,3 +75,17 @@ export const useFavoritesList = defineStore('favoriteItems', {
         }
     }
 })
+
+// export const useAccountsList = defineStore('accounts', {
+//     state: () => ({
+//         accounts: JSON.parse(localStorage.getItem('account')),
+//         accDetails: {
+//             username: ''
+//         }
+//     }),
+//     actions: {
+//         handleSignUp() {
+//             this.accounts.push(this.accDetails)
+//         }
+//     }
+// })
