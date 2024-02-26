@@ -42,7 +42,3 @@ const handleResetFilter = () => {
   <RouterView :filteredProducts="filteredProducts"/>
   <Footer/>
 </template>
-
-<style scoped>
-
-</style>

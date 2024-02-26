@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
   <div class="container-fluid bg-danger fw-semibold text-light">
     <footer

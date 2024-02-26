@@ -24,6 +24,14 @@ const handleSignup = () => {
   psw.value = ''
 }
 
+const useAnotherAccount = () => {
+  localStorage.setItem('showSignupForm', JSON.stringify(true))
+  localStorage.setItem('showSignedupCard', JSON.stringify(false))
+
+  showSignupForm.value = JSON.parse(localStorage.getItem('showSignupForm'))
+  showSignedupCard.value = JSON.parse(localStorage.getItem('showSignedupCard'))
+}
+
 onMounted(() => {
   usernameToDisplay.value = JSON.parse(localStorage.getItem('account')) || ''
 });
@@ -91,6 +99,10 @@ onMounted(() => {
               <h3>You have successfully signed up as {{ usernameToDisplay }}</h3>
               <i class="check-icon bi bi-check-circle-fill"></i>
             </div>
+            <p
+                @click="useAnotherAccount"
+                class="another-acc text-primary text-decoration-underline fw-bold text-center">Signup with another
+              account</p>
           </div>
         </div>
       </div>
@@ -139,6 +151,10 @@ section {
 
 .signedup-card {
   height: 40vh;
+}
+
+.another-acc {
+  cursor: pointer;
 }
 
 .check-icon {

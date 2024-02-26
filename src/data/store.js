@@ -75,17 +75,3 @@ export const useFavoritesList = defineStore('favoriteItems', {
         }
     }
 })
-
-// export const useAccountsList = defineStore('accounts', {
-//     state: () => ({
-//         accounts: JSON.parse(localStorage.getItem('account')),
-//         accDetails: {
-//             username: ''
-//         }
-//     }),
-//     actions: {
-//         handleSignUp() {
-//             this.accounts.push(this.accDetails)
-//         }
-//     }
-// })

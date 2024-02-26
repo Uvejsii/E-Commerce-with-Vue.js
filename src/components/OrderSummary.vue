@@ -11,10 +11,6 @@ const increaseQuantity = () => {
 const decreaseQuantity = () => {
   cartStore.decreaseQuantity(product)
 }
-// const decreaseQuantity = () => {
-//   if (product.quantity === 1) return
-//   product.quantity--
-// }
 </script>
 
 <template>
