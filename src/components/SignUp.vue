@@ -80,7 +80,10 @@ onMounted(() => {
                   <label class="form-label" for="form3Example2">Username</label>
                   <input
                       v-model.trim="username"
-                      type="text" id="form3Example2" class="form-control"/>
+                      type="text" id="form3Example2"
+                      class="form-control"
+                      :class="{'border-3 border-warning': isUsernameBlank}"
+                  />
                   <span
                       v-if="isUsernameBlank"
                       class="text-warning">Can't be blank. <i class="bi bi-exclamation-circle-fill"></i>
@@ -91,7 +94,8 @@ onMounted(() => {
                   <label class="form-label" for="form3Example3">Email address</label>
                   <input
                       v-model.trim="email"
-                      type="email" id="form3Example3" class="form-control" required/>
+                      type="email" id="form3Example3" class="form-control"
+                      :class="{'border-3 border-warning': isEmailBlank || isEmailNotValid}"/>
                   <span
                       v-if="isEmailNotValid"
                       class="text-warning">
@@ -107,7 +111,8 @@ onMounted(() => {
                   <label class="form-label" for="form3Example4">Password</label>
                   <input
                       v-model.trim="psw"
-                      type="password" id="form3Example4" class="form-control"/>
+                      type="password" id="form3Example4" class="form-control"
+                      :class="{'border-3 border-warning': isPswBlank}"/>
                   <span
                       v-if="isPswBlank"
                       class="text-warning">Can't be blank. <i class="bi bi-exclamation-circle-fill"></i></span>

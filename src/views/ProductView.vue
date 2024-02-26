@@ -69,7 +69,8 @@ const addToFavorites = () => {
                   <div
                       v-if="addedToFavsMsg"
                       class="position-absolute bottom-50 start-50 translate-middle-x ps-5">
-                    <p class="text-success fw-semibold fs-4 ms-5 ps-3">Added <i class="bi bi-heart-fill"></i></p>
+                    <p class="text-success fw-semibold fs-4 ms-5 ps-3 d-flex gap-1">Added <i
+                        class="bi bi-heart-fill"></i></p>
                   </div>
                   <button
                       @click="addToFavorites"
