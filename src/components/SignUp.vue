@@ -4,13 +4,38 @@ import {ref, onMounted} from "vue"
 const username = ref('')
 const email = ref('')
 const psw = ref('')
+const isEmailNotValid = ref(false)
+const isEmailBlank = ref(false)
+const isUsernameBlank = ref(false)
+const isPswBlank = ref(false)
 const usernameToDisplay = ref('')
-const storedShowSignupForm = JSON.parse(localStorage.getItem('showSignupForm'));
-const storedShowSignedupCard = JSON.parse(localStorage.getItem('showSignedupCard'));
-const showSignupForm = ref(storedShowSignupForm !== null ? storedShowSignupForm : true);
-const showSignedupCard = ref(storedShowSignedupCard !== null ? storedShowSignedupCard : false);
+const storedShowSignupForm = JSON.parse(localStorage.getItem('showSignupForm'))
+const storedShowSignedupCard = JSON.parse(localStorage.getItem('showSignedupCard'))
+const showSignupForm = ref(storedShowSignupForm !== null ? storedShowSignupForm : true)
+const showSignedupCard = ref(storedShowSignedupCard !== null ? storedShowSignedupCard : false)
 
 const handleSignup = () => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  isEmailNotValid.value = emailRegex.test(email.value)
+
+  isUsernameBlank.value = username.value ? false : true
+
+  isPswBlank.value = psw.value ? false : true
+
+  if (!email.value) {
+    isEmailBlank.value = true
+  } else if (!isEmailNotValid.value) {
+    isEmailBlank.value = false
+    isEmailNotValid.value = true
+  } else {
+    isEmailNotValid.value = false
+    isEmailBlank.value = false
+  }
+
+  if (isUsernameBlank.value || isPswBlank.value || isEmailBlank.value || isEmailNotValid.value) {
+    return
+  }
+
   localStorage.setItem('account', JSON.stringify(username.value))
   localStorage.setItem('showSignupForm', JSON.stringify(false))
   localStorage.setItem('showSignedupCard', JSON.stringify(true))
@@ -56,13 +81,26 @@ onMounted(() => {
                   <input
                       v-model.trim="username"
                       type="text" id="form3Example2" class="form-control"/>
+                  <span
+                      v-if="isUsernameBlank"
+                      class="text-warning">Can't be blank. <i class="bi bi-exclamation-circle-fill"></i>
+                  </span>
                 </div>
                 <div class="form-outline mb-4 text-light fw-semibold">
                   <i class="bi bi-envelope-at-fill me-1"></i>
                   <label class="form-label" for="form3Example3">Email address</label>
                   <input
                       v-model.trim="email"
-                      type="email" id="form3Example3" class="form-control"/>
+                      type="email" id="form3Example3" class="form-control" required/>
+                  <span
+                      v-if="isEmailNotValid"
+                      class="text-warning">
+                    Please enter a valid email address. <i class="bi bi-exclamation-circle-fill"></i>
+                  </span>
+                  <span
+                      v-if="isEmailBlank"
+                      class="text-warning">Can't be blank. <i class="bi bi-exclamation-circle-fill"></i>
+                  </span>
                 </div>
                 <div class="form-outline mb-4 text-light fw-semibold">
                   <i class="bi bi-lock-fill me-1"></i>
@@ -70,6 +108,9 @@ onMounted(() => {
                   <input
                       v-model.trim="psw"
                       type="password" id="form3Example4" class="form-control"/>
+                  <span
+                      v-if="isPswBlank"
+                      class="text-warning">Can't be blank. <i class="bi bi-exclamation-circle-fill"></i></span>
                 </div>
                 <button
                     @click.prevent="handleSignup"
